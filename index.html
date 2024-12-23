@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الإدارة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <iframe id="sidebar" src="sideber.html" frameborder="0"></iframe>
+    <main class="main-content">
+        <div class="container">
+            <div class="welcome-card">
+                <h1>مرحباً بك في نظام الإدارة</h1>
+                <p>يمكنك إدارة العملاء والحسابات بكل سهولة من خلال لوحة التحكم</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card" onclick="window.location.href='customers.html'">
+                    <i class="fas fa-users"></i>
+                    <h2>العملاء</h2>
+                    <p>إدارة وتتبع جميع العملاء</p>
+                </div>
+                
+                <div class="card" onclick="window.location.href='accounts.html'">
+                    <i class="fas fa-box"></i>
+                    <h2>الحسابات</h2>
+                    <p>متابعة الحسابات والمعاملات</p>
+                </div>
+                
+                <div class="card" onclick="window.location.href='debtors.html'">
+                    <i class="fas fa-user"></i>
+                    <h2>المدين</h2>
+                    <p>إدارة حسابات المدين</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

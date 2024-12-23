@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة العملاء</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/sideber.css">
+    <link rel="stylesheet" href="css/customers.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 0;
+            margin-right: 53px; /* عرض القائمة المطوية (50px) + 3px */
+            padding: 35px;
+            transition: margin-right 0.3s ease;
+        }
+        body:not(.sidebar-collapsed) .container {
+            margin-right: 210px; /* عرض القائمة المفتوحة (250px) + 3px */
+        }
+    </style>
+</head>
+<body class="sidebar-collapsed">
+    <iframe src="sideber.html" frameborder="0" class="sidebar-frame"></iframe>
+    <div class="add-customer-form" id="addCustomerForm">
+        <div class="form-content">
+            <span class="close-form" onclick="hideAddCustomerForm()">&times;</span>
+            <h2>إضافة عميل جديد</h2>
+            <form id="customerForm" onsubmit="addNewCustomer(event)">
+                <div class="form-group">
+                    <label for="customerName">اسم العميل:</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">رقم الهاتف:</label>
+                    <input type="tel" id="customerPhone" required pattern="[0-9]{11}">
+                </div>
+                <div class="form-group">
+                    <label>الرصيد الافتتاحي</label>
+                    <div class="balance-container">
+                        <div class="balance-input">
+                            <input type="number" id="initialBalance" placeholder="أدخل المبلغ" step="0.01" min="0">
+                        </div>
+                        <div class="account-type">
+                            <select id="accountType">
+                                <option value="" disabled selected>نوع الحساب</option>
+                                <option value="cash">خزينة</option>
+                                <option value="fawry">فوري</option>
+                                <option value="aman">أمان</option>
+                                <option value="cashier">كاش</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">العنوان:</label>
+                    <input type="text" id="customerAddress" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="submit-btn">إضافة العميل</button>
+                    <button type="button" class="cancel-btn" onclick="hideAddCustomerForm()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <h3>تأكيد الحذف</h3>
+            <p id="confirmationMessage"></p>
+            <div class="confirmation-buttons">
+                <button class="confirm-btn" onclick="confirmDelete()">نعم، احذف</button>
+                <button class="cancel-btn" onclick="hideConfirmationModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+    <main class="main-content">
+        <div class="container">
+            <h1>إدارة العملاء</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="بحث عن عميل..." id="searchInput">
+            </div>
+            <button class="add-customer-btn" onclick="showAddCustomerForm()">
+                <i class="fas fa-plus"></i>
+                إضافة عميل جديد
+            </button>
+            <div class="table-container">
+                <table class="customers-table">
+                    <thead>
+                        <tr>
+                            <th>كود العميل</th>
+                            <th>اسم العميل</th>
+                            <th>رقم الهاتف</th>
+                            <th>إجمالي الرصيد</th>
+                            <th>العنوان</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customersTableBody">
+                        <tr>
+                            <td>1</td>
+                            <td>أحمد محمد</td>
+                            <td>01012345678</td>
+                            <td>5000.00 جنيه</td>
+                            <td>القاهرة</td>
+                            <td>
+                                <div class="actions">
+                                    <button class="send-btn">إرسال</button>
+                                    <button class="receive-btn">استلام</button>
+                                    <button class="edit-btn">تعديل</button>
+                                    <button class="delete-btn">حذف</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script src="js/customers.js"></script>
+</body>
+</html>
